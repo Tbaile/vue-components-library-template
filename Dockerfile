@@ -30,6 +30,12 @@ COPY .storybook .storybook
 COPY src/stories src/stories
 RUN npm run build-storybook
 
+FROM storybook AS storybook-test
+RUN npx playwright install --with-deps
+RUN npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+         "npx http-server storybook-static --port 6006 --silent" \
+         "npx wait-on tcp:127.0.0.1:6006 && yarn test-storybook"
+
 FROM scratch AS storybook-dist
 COPY --from=storybook /app/storybook-static /
 

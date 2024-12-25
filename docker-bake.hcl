@@ -5,6 +5,13 @@ target "storybook-dist" {
   ]
 }
 
+target "storybook-test" {
+  target = "storybook-test"
+  output = [
+    "type=cacheonly"
+  ]
+}
+
 target "dist" {
   target = "dist"
   output = [

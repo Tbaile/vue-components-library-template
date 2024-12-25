@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { TestHeading } from '../main'
+import { expect } from '@storybook/test'
 
 const meta = {
   title: 'Components/TestHeading',
@@ -20,4 +21,9 @@ export const Default: Story = {
       </TestHeading>
     `,
   }),
+  play: async ({ canvas }) => {
+    const heading = canvas.getByRole('heading')
+    await expect(heading.classList).toContain('text-3xl')
+    await expect(heading.textContent).toContain('This is an heading.')
+  },
 }
