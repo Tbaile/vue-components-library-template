@@ -1,5 +1,5 @@
 {
-  "name": "testing-components",
+  "name": "template-components-library",
   "version": "0.0.0",
   "private": false,
   "type": "module",
@@ -7,15 +7,15 @@
     "dist"
   ],
   "types": "./dist/types/src/main.d.ts",
-  "main": "./dist/testing-components.umd.cjs",
-  "module": "./dist/testing-components.js",
+  "main": "./dist/template-components-library.umd.cjs",
+  "module": "./dist/template-components-library.js",
   "exports": {
     ".": {
       "types": "./dist/types/src/main.d.ts",
-      "import": "./dist/testing-components.js",
-      "require": "./dist/testing-components.umd.cjs"
+      "import": "./dist/template-components-library.js",
+      "require": "./dist/template-components-library.umd.cjs"
     },
-    "./testing-components.css": "./dist/testing-components.css"
+    "./template-components-library.css": "./dist/template-components-library.css"
   },
   "scripts": {
     "dev": "vite",
