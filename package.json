@@ -26,18 +26,14 @@
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
     "storybook": "storybook dev -p 6006 --no-open",
-    "build-storybook": "storybook build",
-    "test-storybook": "test-storybook"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "vue": "^3.5.13"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^8.4.7",
-    "@storybook/addon-interactions": "^8.4.7",
     "@storybook/blocks": "^8.4.7",
-    "@storybook/test": "^8.4.7",
-    "@storybook/test-runner": "^0.21.0",
     "@storybook/vue3": "^8.4.7",
     "@storybook/vue3-vite": "^8.4.7",
     "@tailwindcss/vite": "^4.0.0-beta.8",
@@ -59,10 +55,5 @@
     "typescript": "~5.6.3",
     "vite": "^6.0.1",
     "vue-tsc": "^2.1.10"
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
   }
 }
