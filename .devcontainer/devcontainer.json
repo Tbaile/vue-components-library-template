@@ -1,0 +1,19 @@
+{
+	"name": "Dev environment",
+	"dockerComposeFile": [
+		"../docker-compose.yml",
+		"docker-compose.yml"
+	],
+	"service": "dev",
+	"workspaceFolder": "/app",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"Vue.volar",
+				"bradlc.vscode-tailwindcss",
+				"ms-azuretools.vscode-docker",
+				"github.vscode-github-actions"
+			]
+		}
+	}
+}
