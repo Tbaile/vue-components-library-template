@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { useTheme } from '../../src/lib/theme'
+import { useTheme } from '../theme'
 
 describe('theme composable', () => {
   it('is light by default', () => {

@@ -12,9 +12,9 @@ FROM base AS library
 COPY package.json .
 COPY package-lock.json .
 RUN npm ci
-COPY src/components src/components
-COPY src/main.css src/main.css
-COPY src/main.ts src/main.ts
+COPY .storybook .storybook
+COPY src src
+COPY README.md .
 COPY env.d.ts .
 COPY tsconfig.app.json .
 COPY tsconfig.json .
@@ -29,9 +29,6 @@ FROM scratch AS dist
 COPY --from=library /app/dist /
 
 FROM library AS storybook
-COPY .storybook .storybook
-COPY src/stories src/stories
-COPY README.md .
 RUN npm run build-storybook
 
 FROM scratch AS storybook-dist
