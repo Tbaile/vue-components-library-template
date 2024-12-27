@@ -9,4 +9,4 @@ services:
     command:
       - "/bin/bash"
       - "-c"
-      - "npm install && npm run dev"
+      - "npm install && npm run storybook"
