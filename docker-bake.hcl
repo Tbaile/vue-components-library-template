@@ -4,7 +4,7 @@ target "storybook-dist" {
     "type=local,dest=./storybook-static"
   ]
   cache-to = [
-    "type=gha"
+    "type=gha,mode=max"
   ]
 }
 
@@ -14,7 +14,7 @@ target "dist" {
     "type=local,dest=./dist"
   ]
   cache-to = [
-    "type=gha"
+    "type=gha,mode=max"
   ]
 }
 
