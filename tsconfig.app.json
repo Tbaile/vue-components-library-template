@@ -14,6 +14,7 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "noEmit": false,
     "emitDeclarationOnly": true,
+    "declarationMap": true,
     "outDir": "./dist/types",
   }
 }
