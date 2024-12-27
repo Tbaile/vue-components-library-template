@@ -6,6 +6,9 @@ target "storybook-dist" {
   cache-to = [
     "type=gha,mode=max,scope=storybook"
   ]
+  cache-from = [
+    "type=gha,scope=library"
+  ]
 }
 
 target "dist" {
@@ -15,6 +18,9 @@ target "dist" {
   ]
   cache-to = [
     "type=gha,mode=max,scope=library"
+  ]
+  cache-from = [
+    "type=gha,scope=library"
   ]
 }
 
