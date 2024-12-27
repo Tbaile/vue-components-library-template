@@ -31,9 +31,11 @@
   },
   "dependencies": {
     "@vueuse/core": "^12.2.0",
+    "storybook-addon-pseudo-states": "^4.0.2",
     "vue": "^3.5.13"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^8.4.7",
     "@storybook/addon-essentials": "^8.4.7",
     "@storybook/addon-themes": "^8.4.7",
     "@storybook/blocks": "^8.4.7",
