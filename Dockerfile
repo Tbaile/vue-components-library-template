@@ -31,6 +31,7 @@ COPY --from=library /app/dist /
 FROM library AS storybook
 COPY .storybook .storybook
 COPY src/stories src/stories
+COPY README.md .
 RUN npm run build-storybook
 
 FROM scratch AS storybook-dist
