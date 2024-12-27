@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.app.json",
+  "include": [
+    "src/**/__tests__/*",
+    "env.d.ts"
+  ],
+  "exclude": [],
+  "compilerOptions": {
+    "composite": false,
+    "noEmit": true,
+    "emitDeclarationOnly": false
+  }
+}

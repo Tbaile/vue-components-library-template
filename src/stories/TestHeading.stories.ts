@@ -19,5 +19,5 @@ export const Default: Story = {
         This is an heading.
       </TestHeading>
     `,
-  })
+  }),
 }

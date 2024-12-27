@@ -7,7 +7,6 @@ ARG GID=1000
 RUN groupmod -g ${GID} node \
     && usermod -u ${UID} -g ${GID} node
 USER node
-CMD ["/bin/bash", "-c", "npm install && npm run storybook"]
 
 FROM base AS library
 COPY package.json .
@@ -20,8 +19,11 @@ COPY env.d.ts .
 COPY tsconfig.app.json .
 COPY tsconfig.json .
 COPY tsconfig.node.json .
+COPY tsconfig.vitest.json .
 COPY vite.config.ts .
-RUN npm run build
+COPY vitest.config.ts .
+RUN npm run test:unit -- run \
+    && npm run build
 
 FROM scratch AS dist
 COPY --from=library /app/dist /
@@ -30,12 +32,6 @@ FROM library AS storybook
 COPY .storybook .storybook
 COPY src/stories src/stories
 RUN npm run build-storybook
-
-FROM storybook AS storybook-test
-RUN npx playwright install --with-deps
-RUN npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-         "npx http-server storybook-static --port 6006 --silent" \
-         "npx wait-on tcp:127.0.0.1:6006 && yarn test-storybook"
 
 FROM scratch AS storybook-dist
 COPY --from=storybook /app/storybook-static /
