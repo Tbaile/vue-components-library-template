@@ -35,6 +35,9 @@ jobs:
     needs: build
     name: 'GitHub Pages deployment'
     runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-${{ github.ref }}
+      cancel-in-progress: false
     permissions:
       id-token: write
       pages: write
@@ -48,6 +51,9 @@ jobs:
     needs: build
     name: 'Publish NPM package'
     runs-on: ubuntu-latest
+    concurrency:
+      group: publish-${{ github.ref }}
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
       - name: Download library as artifact
