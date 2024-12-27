@@ -20,16 +20,40 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: storybook-static/
+      - name: Upload library as artifact
+        if: endsWith(github.ref, 'refs/heads/main')
+        id: library
+        uses: actions/upload-artifact@v4
+        with:
+          name: library
+          path: dist/
 
   pages_deploy:
     if: endsWith(github.ref, 'refs/heads/main')
     needs: build
-    name: 'GitHub Pages Deployment'
+    name: 'GitHub Pages deployment'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       pages: write
     steps:
-      - name: Download static files as artifact
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  publish:
+    if: endsWith(github.ref, 'refs/heads/main')
+    needs: build
+    name: 'Publish NPM package'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download library as artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: library
+          path: dist/
+      - name: Publish library
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
