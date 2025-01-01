@@ -7,6 +7,7 @@ ARG GID=1000
 RUN groupmod -g ${GID} node \
     && usermod -u ${UID} -g ${GID} node
 USER node
+RUN npm config set update-notifier false
 
 FROM base AS library
 COPY package.json .
