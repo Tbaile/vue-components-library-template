@@ -39,6 +39,13 @@ docker-compose up
 
 This will start the storybook server, you can access it at `http://localhost:6006`.
 
-## Setup:
+## Setup
 
-- Add the `NPM_TOKEN` for publishing into GitHub secrets
+No additional setup is required, just clone the repo and start coding.
+
+For the CI and automatic publishing, the following secrets are required:
+
+- `RELEASE_PLEASE_TOKEN`: A GitHub token with `content` and `pull_request` permissions, additional info can be found in
+  the [Release Please README](https://github.com/googleapis/release-please-action).
+- `NPM_TOKEN`: A token with access to the NPM package, this is required for the automatic publishing of the library when
+  a new tag is created.
