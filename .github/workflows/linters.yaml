@@ -8,16 +8,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
       - name: Run prettier
         run: |
-          docker compose run --rm --no-TTY dev npm install
-          docker compose run --rm --no-TTY dev npx prettier --list-different src/
+          npm install
+          npx prettier --list-different src/
 
   eslint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run eslint
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - name: Run prettier
         run: |
-          docker compose run --rm --no-TTY dev npm install
-          docker compose run --rm --no-TTY dev npx eslint .
+          npm install
+          npx prettier --list-different src/
