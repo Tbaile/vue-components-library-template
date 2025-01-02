@@ -47,6 +47,8 @@ jobs:
         uses: actions/deploy-pages@v4
 
   publish:
+    env:
+      NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     if: startsWith(github.ref, 'refs/tags/')
     needs: build
     name: 'Publish NPM package'
@@ -61,7 +63,8 @@ jobs:
         with:
           name: library
           path: dist/
-      - name: Publish library
+      - if: env.NPM_AUTH_TOKEN != ''
+        name: Publish library
         uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
