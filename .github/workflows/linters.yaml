@@ -23,7 +23,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-      - name: Run prettier
+      - name: Run eslint
         run: |
           npm install
-          npx prettier --list-different src/
+          npx eslint .
