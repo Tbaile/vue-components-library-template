@@ -4,9 +4,12 @@ on:
   push:
     branches:
       - main
+      - renovate/*
     tags:
       - '*'
   pull_request:
+    branches-ignore:
+      - renovate/*
 
 jobs:
   build:
