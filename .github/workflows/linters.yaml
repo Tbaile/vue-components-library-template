@@ -27,3 +27,17 @@ jobs:
         run: |
           npm install
           npx eslint .
+
+  conventional_commits:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - name: Run conventional commits
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          npm install
+          echo "$TITLE" | npx commitlint
