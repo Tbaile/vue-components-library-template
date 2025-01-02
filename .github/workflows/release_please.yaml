@@ -11,9 +11,6 @@ name: release-please
 
 jobs:
   release-please:
-    env:
-      PAT_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
-    if: env.PAT_TOKEN != ''
     runs-on: ubuntu-latest
     steps:
       - uses: googleapis/release-please-action@v4

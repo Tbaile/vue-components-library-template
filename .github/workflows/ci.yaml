@@ -47,9 +47,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
   publish:
-    env:
-      NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-    if: startsWith(github.ref, 'refs/tags/') && env.NPM_AUTH_TOKEN != ''
+    if: startsWith(github.ref, 'refs/tags/')
     needs: build
     name: 'Publish NPM package'
     runs-on: ubuntu-latest

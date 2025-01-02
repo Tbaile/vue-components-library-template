@@ -9,11 +9,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run prettier
-        run: docker compose run --rm --no-TTY dev npx prettier --list-different src/
+        run: |
+          docker compose run --rm --no-TTY dev npm install
+          docker compose run --rm --no-TTY dev npx prettier --list-different src/
 
   eslint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Run eslint
-        run: docker compose run --rm --no-TTY dev npx eslint .
+        run: |
+          docker compose run --rm --no-TTY dev npm install
+          docker compose run --rm --no-TTY dev npx eslint .
