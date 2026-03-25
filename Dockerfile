@@ -1,4 +1,4 @@
-FROM node:22.22.1 AS base
+FROM node:24.14.1 AS base
 WORKDIR /app
 
 FROM base AS development
